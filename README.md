@@ -1,2 +1,3 @@
-# Atlantic-Gamping
+# Atlantic-Glamping
+
 Interactive Full-Stack

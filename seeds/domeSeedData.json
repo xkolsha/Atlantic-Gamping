@@ -1,0 +1,21 @@
+[
+  {
+    "title": "Unique and Cozy Dome Accommodation for Glamping new Saint John, New Brunswick",
+    "description": "Located privately in a secluded forest just under an hour from Saint John in New Brunswick. This unique dome accommodation can provide up to two guests with an unforgettable glamping adventure. Inside, guests will find a cozy queen-size bed appointed with plush bedding and linens. Inside the dome, guests will find it simply but stylishly decorated, with a coffee table and chairs for guests to sit and enjoy the views of the forest around through the original windows at the front of the dome. Electricity and lighting is provided, and there is even an indoor propane fireplace to keep things warm and toasty. In the outdoor kitchen area, (May through October) guests will find a stove, a kettle, a sink with running water, and a barbecue grill for guests to enjoy some cooking in the fresh air. Taking a shower in the outdoor bathroom while being able to observe the sights and sounds of the forest is an unforgettable experience. During the Winter months (November and April) decks are closed and guests are required to bring drinking water, food or a camp stove. This hilltop escape comes equipped with an outdoor wood-stove sauna (for a $40 additional charge) which brings the luxury of a resort to this private oasis. Glamping dome rental near Saint John, New Brunswick",
+    "shortDesc": "Dome • 2 guests • 1 Private Bathroom • Private Kitchen",
+    "location": "Long Point, New Brunswick (Canada)",
+    "numOfGuests": 2,
+    "pricePerNight": 132,
+    "stars": 4,
+    "numOfBeds": 1,
+    "bedSize": "queen",
+    "wifi": false,
+    "cellService": true,
+    "fireplace": true,
+    "kitchen": true,
+    "electricity": true,
+    "swimming": true,
+    "shower": true,
+    "linens": true
+  }
+]
