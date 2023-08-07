@@ -2,9 +2,14 @@
 // This table includes a username
 
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Creator extends Model {}
+class Creator extends Model {
+    checkPasswrod(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
+    }
+}
 
 Creator.init(
   {
@@ -13,10 +18,6 @@ Creator.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -30,11 +31,17 @@ Creator.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [6],
+        len: [8],
       },
     },
   },
   {
+    hooks: {
+        beforeCreate: async (newCreatorData) => {
+            newCreatorData.password = await bcrypt.hash(newCreatorData.password, 10);
+            return newCreatorData;
+        },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
