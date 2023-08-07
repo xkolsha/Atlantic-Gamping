@@ -2,23 +2,28 @@ const sequelize = require("../config/connection");
 const seedCategories = require("./category-seeds");
 const seedLocations = require("./location-seeds");
 const seedFeatures = require("./features-seeds");
+const seedUsers = require("./user-seeds");
+const seedCreators = require("./creator-seeds");
 
 const seedAll = async () => {
   try {
     await sequelize.sync({ force: false });
     console.log("Database synced");
 
-    // First, seed the categories
     await seedCategories();
     console.log("Categories seeded");
 
-    // Then, seed the locations
     await seedLocations();
     console.log("Locations seeded");
 
-    // Finally, seed the features
     await seedFeatures();
     console.log("Features seeded");
+
+    await seedUsers();
+    console.log("Users seeded");
+
+    await seedCreators();
+    console.log("Creators seeded");
 
     process.exit(0);
   } catch (error) {
