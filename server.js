@@ -4,21 +4,24 @@ const express = require("express");
 // const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const path = require("path");
 const PORT = process.env.PORT || 3001;
-
-// Import sequelize connection
-const sequelize = require("./config/connection");
+const routes = require("./controllers");
 
 // Initialize Express.js App
 const app = express();
 
+// Import sequelize connection
+const sequelize = require("./config/connection");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+
+// added routes through connections
+app.use(routes);
+
+// Setup for EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-
-// Testing for EJS (WORKING!) ***** CAN DELETE THIS SECTION AFTER EVRYONE VIEWS!
-app.get("/", (req, res) => {
-  res.render("test", { pageTitle: "Home" });
-});
-// *****************************************************************************
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT),
