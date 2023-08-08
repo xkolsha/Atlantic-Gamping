@@ -1,0 +1,88 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(255, 252, 246);
+}
+
+.topNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(185, 201, 229);
+    position:fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .navElem {
+    float: left;
+  }
+  
+  .navElem a {
+    display: block;
+    color: rgb(92, 67, 67);
+    text-align: center;
+    font-size: larger;
+    padding: 14px 16px;
+  }
+   
+  .differLi{
+    margin-left: 80%;
+  }
+
+  .firstPic{
+    background-image: url("tent-glamping-dusk.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin-top: 1.7%;
+    position: relative;
+  }
+
+  .welcome{
+    position:absolute;
+    background-color: rgb(47, 47, 47);
+    color: white;
+    margin-top: 20%;
+    opacity: 0.9;
+    width: 100%;
+  }
+
+  .welcomeT{
+    margin-left: 48% 
+  }
+
+  .welcomeT2{
+    margin-left: 45% 
+  }
+
+  .welcomeT3{
+    margin-left: 42% 
+  }
+
+  .secondSlide{
+    color: rgb(92, 67, 67);
+    font-size: large;
+  }
+
+  .secondSlide > h1, p{
+    text-align: center;
+  }
+
+  .thirdSlide{
+    color: rgb(92, 67, 67);
+  }
+
+  .thirdSlide > h1{
+    text-align: center;
+  }
+
+
+
