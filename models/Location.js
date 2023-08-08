@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class location extends Model {}
+class Location extends Model {}
 
 Location.init(
   {
@@ -55,7 +55,7 @@ Location.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "Location",
+    modelName: "location",
   }
 );
 
