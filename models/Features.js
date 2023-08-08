@@ -53,15 +53,15 @@ Features.init(
                 model: 'category',
                 key: 'id',
             },
-            location_id: {
-                type: DataTypes.INTEGER,
-                references: {
-                    model: 'location',
-                    key: 'id',
+        },
+        location_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'location',
+                key: 'id',
                 },
             },
         },
-    },
     {
         sequelize,
         freezeTableName: true,
