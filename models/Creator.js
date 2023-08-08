@@ -1,14 +1,14 @@
 // This is the table to collect data from a propery user who will create their own listings
 // This table includes a username
 
-const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const sequelize = require("../config/connection");
 
 class Creator extends Model {
-    checkPasswrod(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password);
-    }
+  checkPasswrod(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
 }
 
 Creator.init(
@@ -37,16 +37,19 @@ Creator.init(
   },
   {
     hooks: {
-        beforeCreate: async (newCreatorData) => {
-            newCreatorData.password = await bcrypt.hash(newCreatorData.password, 10);
-            return newCreatorData;
-        },
+      beforeCreate: async (newCreatorData) => {
+        newCreatorData.password = await bcrypt.hash(
+          newCreatorData.password,
+          10
+        );
+        return newCreatorData;
+      },
     },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'creator',
+    modelName: "creator",
   }
 );
 
