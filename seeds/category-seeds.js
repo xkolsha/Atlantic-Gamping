@@ -7,8 +7,20 @@ const categoryData = [
     categoryName: "Tent",
   },
   {
-    categoryName: "Cabins",
+    categoryName: "Cabin",
   },
+  {
+    categoryName: "Dome",
+  },
+  {
+    categoryName: "Treehouse",
+  },
+  {
+    categoryName: "Yurt",
+  },
+  {
+    categoryName: "Trailer",
+  }
 ];
 
 module.exports = seedCategories;
