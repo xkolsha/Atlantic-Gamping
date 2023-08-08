@@ -3,7 +3,7 @@ const sequelize = require("../config/connection");
 
 class location extends Model {}
 
-location.init(
+Location.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -55,8 +55,8 @@ location.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "location",
+    modelName: "Location",
   }
 );
 
-module.exports = location;
+module.exports = Location;
