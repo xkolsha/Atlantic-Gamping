@@ -353,36 +353,6 @@ const locationData = [
     category_id: 2,
   },
   {
-    //id: 24
-    city: "Mactaquac",
-    province: "NB",
-    page_url: "https://www.mangatamactaquac.ca/listing/en/529458",
-    img_url:
-      "https://l.icdbcdn.com/oh/6ced9202-e9fc-4cf0-b0fb-ec6787ea0b1a.jpg?w=1920",
-    title: "Cabin on the Falls",
-    description:
-      "Cabin on the Falls is simply beautiful and has everything you need to enjoy a peaceful and relaxing stay. Our stream-side wood fired hot tub will leave you wanting more. Our breathtaking property is positioned directly beside Mactaquac Provincial Park, one’s of New Brunswick’s best year-round outdoor playgrounds, with over 30km of trails! See our other cabins that sleep 5-6! On The Falls A-Frame is a one bedroom (loft) a-frame cabin, with a full bathroom with tiled shower. This open concept a-frame features high ceilings, with big windows and a custom kitchen that will have everything you need. This unit has one queen bed and a sleeper sofa. Ideal for 3 adults or 2 adults and up to 2 children. Outdoors, you will find a wood fired go tub and fire pit with outdoor cooker nestled along the Meadow Brook. There is a fully covered porch on the front of the cabin, so you can enjoy the sights and sounds, rain or shine! I am always available by phone or message, but will give you complete privacy during your stay. Available only if needed. We have 27 acres of woodland situation directly beside Mactaquac Provincial Park. We have two beautiful streams that run by the front of all our cabins. Cabins have direct access to over 30km of hiking trails in the park.",
-    short_desc:
-      "Mangata Mactaquac invites you to kick back and relax in this stunningly modern cabin in the woods.",
-    price: 189,
-    category_id: 2,
-  },
-  {
-    //id: 24
-    city: "Mactaquac",
-    province: "NB",
-    page_url: "https://www.mangatamactaquac.ca/listing/en/529458",
-    img_url:
-      "https://l.icdbcdn.com/oh/6ced9202-e9fc-4cf0-b0fb-ec6787ea0b1a.jpg?w=1920",
-    title: "Cabin on the Falls",
-    description:
-      "Cabin on the Falls is simply beautiful and has everything you need to enjoy a peaceful and relaxing stay. Our stream-side wood fired hot tub will leave you wanting more. Our breathtaking property is positioned directly beside Mactaquac Provincial Park, one’s of New Brunswick’s best year-round outdoor playgrounds, with over 30km of trails! See our other cabins that sleep 5-6! On The Falls A-Frame is a one bedroom (loft) a-frame cabin, with a full bathroom with tiled shower. This open concept a-frame features high ceilings, with big windows and a custom kitchen that will have everything you need. This unit has one queen bed and a sleeper sofa. Ideal for 3 adults or 2 adults and up to 2 children. Outdoors, you will find a wood fired go tub and fire pit with outdoor cooker nestled along the Meadow Brook. There is a fully covered porch on the front of the cabin, so you can enjoy the sights and sounds, rain or shine! I am always available by phone or message, but will give you complete privacy during your stay. Available only if needed. We have 27 acres of woodland situation directly beside Mactaquac Provincial Park. We have two beautiful streams that run by the front of all our cabins. Cabins have direct access to over 30km of hiking trails in the park.",
-    short_desc:
-      "Mangata Mactaquac invites you to kick back and relax in this stunningly modern cabin in the woods.",
-    price: 189,
-    category_id: 2,
-  },
-  {
     //id: 25
     city: "Mactaquac",
     province: "NB",
