@@ -25,7 +25,7 @@
 }
 .nav-list li a {
   text-decoration: none;
-  color: rgb(122, 35, 35);
+  color: #623e2a;
   letter-spacing: 0.01rem;
 }
 .nav-list li a:hover {
@@ -34,7 +34,7 @@
 
 .main-nav a {
   text-decoration: none;
-  color: rgb(122, 35, 35);
+  color: #623e2a;
 }
 .main-nav a:hover {
   color: rgb(131, 86, 86);
