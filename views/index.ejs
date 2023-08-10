@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Glamping</title>
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+  <%-include("partials/head")  %>
   </head>
   <body>
-    <div>
-      <ul class="topNav">
-        <li class="navElem"><a href="#">Home</a></li>
-        <li class="navElem"><a href="#">About</a></li>
-        <li class="navElem"><a href="#">Adventures</a></li>
-        <li class="navElem"><a href="#">Stories</a></li>
-        <li class="differLi navElem"><a href="#">Login</a></li>
-      </ul>
-    </div>
+   <%-include('partials/nav')  %>
+   
     <div class="firstPic">
       <div class="welcome">
         <h2 class="welcomeT">WELCOME TO</h2>
@@ -75,5 +64,6 @@
       <h1>Your Accomodations</h1>
       <div class="thirdSlideImages"></div>
     </div>
+    <%-include("partials/foot")  %>
   </body>
 </html>
