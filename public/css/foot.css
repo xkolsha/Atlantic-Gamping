@@ -1,7 +1,7 @@
 .footer-main {
   display: flex;
   flex-direction: column;
-  background-color: #954535;
+  background-color: #623e2a;
   color: white;
   font-family: monospace;
   font-weight: 100;
@@ -46,7 +46,7 @@
 .small-card button {
   border: 2px solid white;
   color: white;
-  background-color: #954535;
+  background-color: #623e2a;
   padding: 20px 3em;
   border-radius: 40px;
   margin: auto;
