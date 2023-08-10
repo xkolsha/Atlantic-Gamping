@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Glamping</title>
-    <link href="../public/css/style.css" rel="stylesheet" type="text/css" />
-  </head>
+<%-include('partials/head')  %>
   <body>
-    <div>
-      <ul class="topNav">
-        <li class="navElem"><a href="#">Home</a></li>
-        <li class="navElem"><a href="#">About</a></li>
-        <li class="navElem"><a href="#">Adventures</a></li>
-        <li class="navElem"><a href="#">Stories</a></li>
-        <li class="differLi navElem"><a href="#">Login</a></li>
-      </ul>
-    </div>
+    <%-include("partials/nav") %>
     <div class="firstPic">
       <div class="welcome">
         <h2 class="welcomeT">WELCOME TO</h2>
@@ -242,21 +229,6 @@
         </div>
       </div>
     </div>
-    <div class="media">
-      <h1>The Glamper</h1>
-      <div class="L">
-        <div class="tobox">
-          <h3>Listings Office</h3>
-          <h4>123 Anywhere St.</h4>
-          <h4>1123-456</h4>
-          <h4>glamp@glamper.com</h4>
-        </div>
-        <div class="tobox">
-          <h3>Office Hours</h3>
-          <h4>Monday to Friday</h4>
-          <h4>9:00 am to 6:00 pm</h4>
-        </div>
-      </div>
-    </div>
+   <%-include("partials/foot")  %>
   </body>
 </html>
