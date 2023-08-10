@@ -1,0 +1,53 @@
+.footer-main {
+  display: flex;
+  flex-direction: column;
+  background-color: #954535;
+  color: white;
+  font-family: monospace;
+  font-weight: 100;
+  min-height: 600px;
+  width: 100%;
+}
+.footer-main h3 {
+  font-size: 3rem;
+  padding-left: 10%;
+}
+.containers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.small-card {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 2px solid white;
+  padding: 25px 55px;
+  margin: 25px;
+  width: 300px;
+  font-size: 1rem;
+  min-height: 200px;
+}
+
+.containers h4 {
+  font-size: 2rem;
+  margin: 0 0 20px 0;
+}
+.small-card .inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.small-card .inner p {
+  margin: 0;
+}
+.small-card button {
+  border: 2px solid white;
+  color: white;
+  background-color: #954535;
+  padding: 20px 3em;
+  border-radius: 40px;
+  margin: auto;
+}
