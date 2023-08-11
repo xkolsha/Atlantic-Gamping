@@ -39,6 +39,9 @@
 .main-nav a:hover {
   color: rgb(131, 86, 86);
 }
+.settings-icon {
+  width: 30px;
+}
 
 /* Media queries Tablet */
 
