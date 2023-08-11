@@ -22,7 +22,7 @@ Review.init(
     location_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "listing",
+        model: "location",
         key: "id",
       },
     },
