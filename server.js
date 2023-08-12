@@ -1,7 +1,7 @@
 // Import necessary packages
 const express = require("express");
-// const session = require("express-session");
-// const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const session = require("express-session");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const routes = require("./controllers");
@@ -11,6 +11,22 @@ const app = express();
 
 // Import sequelize connection
 const sequelize = require("./config/connection");
+
+// Set up sessions with cookies
+const sess = {
+  secret: 'ihaveasecretdonttell!',
+  cookie: {
+    // Stored in milliseconds
+    maxAge: 24 * 60 * 60 * 1000, // expires after 1 day
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+
+app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
