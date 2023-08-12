@@ -8,6 +8,6 @@ const userRoutes = require("./user-routes");
 router.use("/about", aboutRoutes);
 router.use("/gamp", gampRoutes);
 router.use("/review", reviewRoutes); // Using the reviewRoutes router
-router.use("/user", userRoutes);
+router.use("/users", userRoutes);
 
 module.exports = router;
