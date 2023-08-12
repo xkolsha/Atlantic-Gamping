@@ -1,5 +1,4 @@
 const User = require("./User");
-const Creator = require("./Creator");
 const Category = require("./Category");
 const Location = require("./Location");
 const Features = require("./Features");
@@ -22,4 +21,4 @@ Review.belongsTo(Location, {
   foreignKey: "location_id",
 });
 
-module.exports = { User, Creator, Category, Location, Features, Review };
+module.exports = { User, Category, Location, Features, Review };
