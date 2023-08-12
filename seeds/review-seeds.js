@@ -21,7 +21,7 @@ const reviewData = [
     content:
       "I must have been dreaming! The clouds were as soft as pillows, and the harp music was a nice touch. Can't wait to go back someday! 😉",
     rating: 5,
-    location_id: 33,
+    location_id: 31,
   },
 ];
 

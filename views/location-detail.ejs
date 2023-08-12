@@ -1,0 +1,13 @@
+<%-include('partials/head', { pageTitle: location.title }) %>
+<body>
+  <%-include("partials/nav") %>
+  <h1><%= location.title %></h1>
+  <p>City: <%= location.city %></p>
+  <p>Province: <%= location.province %></p>
+  <% location.reviews.forEach(review => { %>
+    <%-include("partials/review", { review: review })  %> <!-- Pass the review variable -->
+  <% }); %>
+  <%-include("partials/foot")  %>
+</body>
+</html>
+
