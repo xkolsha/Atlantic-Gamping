@@ -1,0 +1,29 @@
+<%-include('partials/head')  %>
+  <body>
+    <%-include("partials/nav") %>
+
+    <section class="content-boxes">
+        <div class="left-nav">
+            <h3>Welcome <!-- username generated with javascript --></h3>
+            <p><a href="">Change Password</a></p>
+            <p><a href="">Add a Listing</a></p>
+            <p><a href="">Log Out</a></p>
+        </div>
+
+        <div class="right-nav">
+            <h3 id="view-header">My Listings<!-- Recently Viewed appends to Favourites generated with javascript --></h3>
+            <div class="cards">
+                <div class="card-box">
+                    <card><!-- cards generated with javascript --> </card>
+                    <li>Views:</li>
+                    <li><a href="">Edit</a></li>
+                    <li><a href="">Delete</a></li>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <%-include("partials/foot")  %>
+</body>
+</html>
