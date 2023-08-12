@@ -20,4 +20,13 @@ router.get("/creator", async (req, res) => {
   res.render("creator-settings", { pageTitle: "Settings" });
 });
 
+// Login route
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
+
 module.exports = router;
