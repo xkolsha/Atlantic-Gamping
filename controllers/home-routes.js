@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const withAuth = require('../utils/auth');
 
 router.get("/", async (req, res) => {
   res.render("index", { pageTitle: "Home" });
@@ -28,5 +29,37 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
+
+// Gets one location with Authorization helper. This allows the user to view that location ONLY if they are logged in.
+// Use withAuth in all of your get requests!!
+router.get('/location/:id', withAuth, async (req, res) => {
+    try {
+      const dbLocationData = await Location.findByPk(req.params.id, {
+        include: [
+          {
+            model: Location,
+            attributes: [
+              'id',
+              'city',
+              'province',
+              'page_url',
+              'img_url',
+              'title',
+              'description',
+              'short_desc',
+              'price'
+            ],
+          },
+        ],
+      });
+      const location = dbLocationData.get({ plain: true });
+      res.render('location', { location, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+);
+
 
 module.exports = router;

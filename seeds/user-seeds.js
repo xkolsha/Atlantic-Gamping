@@ -3,14 +3,14 @@ const bcrypt = require("bcrypt");
 
 const userData = [
   {
-    userName: "Kethchup Chips Woman",
-    isCreator: "true",
+    username: "Kethchup Chips Woman",
+    iscreator: "true",
     email: "ketchupchipswoman@example.com",
     password: "password123",
   },
   {
-    userName: "Maple Man",
-    isCreator: "false",
+    username: "Maple Man",
+    iscreator: "false",
     email: "mapleman@example.com",
     password: "password456",
   },
