@@ -23,6 +23,10 @@ app.use(routes);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.get("/test", async (req, res) => {
+  res.render("test", { pageTitle: "Test" });
+});
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT),
     () => {
