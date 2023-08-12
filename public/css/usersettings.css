@@ -28,7 +28,7 @@
     flex-direction: row;
 }
 
-h3 {
+.user-headings {
     color: rgb(122, 35, 35);
 }
 
@@ -55,8 +55,7 @@ a {
     text-decoration: none;
 }
 
-p,
-li,
+.userlist,
  a:hover {
     color: rgb(122, 35, 35);
   }
