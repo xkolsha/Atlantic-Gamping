@@ -7,7 +7,16 @@
   <% location.reviews.forEach(review => { %>
     <%-include("partials/review", { review: review })  %> <!-- Pass the review variable -->
   <% }); %>
+  <% if (!hasReviews) { %>
+    <!-- Add Review Button -->
+    <button id="add-review-btn">Add Review</button>
+  <% } else { %>
+    <% location.reviews.forEach(review => { %>
+      <!-- Edit Review Button for each review -->
+      <button class="edit-review-btn" data-review-id="<%= review.id %>">Edit Review</button>
+    <% }); %>
+  <% } %>
+  
   <%-include("partials/foot")  %>
 </body>
 </html>
-
