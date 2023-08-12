@@ -1,6 +1,7 @@
+<div class="review"></div>
+<% location.reviews.forEach(review => { %>
 <div class="review">
-  <div class="review">
-    <p><strong>Rating:</strong> <%= review.rating %> / 5 stars</p>
-    <p><strong>Content:</strong> <%= review.content %></p>
-  </div>
+  <p><strong>Rating:</strong> <%= review.rating %> / 5 stars</p>
+  <p><strong>Content:</strong> <%= review.content %></p>
 </div>
+<% }); %>

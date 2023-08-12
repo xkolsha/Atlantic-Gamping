@@ -3,7 +3,7 @@ const seedCategories = require("./category-seeds");
 const seedLocations = require("./location-seeds");
 const seedFeatures = require("./features-seeds");
 const seedUsers = require("./user-seeds");
-const seedCreators = require("./creator-seeds");
+const seedReviews = require("./review-seeds");
 
 const seedAll = async () => {
   try {
@@ -22,8 +22,8 @@ const seedAll = async () => {
     await seedUsers();
     console.log("Users seeded");
 
-    await seedCreators();
-    console.log("Creators seeded");
+    await seedReviews();
+    console.log("Reviews seeded");
 
     process.exit(0);
   } catch (error) {

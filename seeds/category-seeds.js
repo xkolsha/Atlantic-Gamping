@@ -20,7 +20,7 @@ const categoryData = [
   },
   {
     categoryName: "Trailer",
-  }
+  },
 ];
 
 module.exports = seedCategories;
