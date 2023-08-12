@@ -32,10 +32,12 @@
   border: 0;
   box-shadow: 0 0 1rem black;
   border-radius: 10px;
+  font-size: .9rem;
 }
 .modal img {
   width: 80px;
 }
+
 
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.568);
@@ -81,19 +83,24 @@
 #q-section {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 200px;
   width: 300px;
-  margin: 20px;
+  padding: 20px;
   align-items: center;
 }
 .gamp-questions {
   font-size: 1.2rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-bottom: 20px;
 }
+div .gamp-answers {
+  height: 300px; !important
+}
+
 #q-section li {
   list-style: none;
   padding: 10px;
-  margin: 25px 0;
+  margin: 10px 0;
   border-radius: 10px;
   background-color: #623e2a;
   color: white;
@@ -110,7 +117,7 @@
   }
   .modal {
     width: 500px;
-    height: 300px;
+    height: 450px;
   }
   .gamp-header {
     width: 350px;
@@ -122,10 +129,11 @@
   }
   .gamp-card .exit-btn {
     left: 220px;
-    bottom: 180px;
+    bottom: 160px;
   }
   #gamp-options {
-    margin-left: 70px;
+    margin-right: 30px;
+    padding: 0;
   }
 }
 
@@ -135,13 +143,15 @@
     height: 500px;
   }
   .gamp-card .exit-btn {
-    left: 170px;
+    left: 160px;
   }
   #gamp-options {
     flex-direction: column;
-    margin-top: 60px;
+    margin-left: 40px;
+    margin-bottom: 100px;
   }
   .gamp-card button {
     margin: 10px;
   }
+
 }
