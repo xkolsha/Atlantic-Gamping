@@ -22,8 +22,14 @@ router.get("/location/:id", async (req, res, next) => {
     if (!location) {
       return res.status(404).send("Location not found");
     }
+
+    const locationPlain = location.get({ plain: true });
+    const hasReviews =
+      locationPlain.reviews && locationPlain.reviews.length > 0; // Determine if reviews exist
+
     res.render("location-detail", {
-      location: location.get({ plain: true }),
+      location: locationPlain,
+      hasReviews, // Pass hasReviews to the view
       pageTitle: location.title,
     });
   } catch (err) {
