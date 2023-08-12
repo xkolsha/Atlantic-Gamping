@@ -63,6 +63,8 @@ let showResults = () => {
   title.textContent =
     "Exellent, I think I have found the perfect place for you!";
   console.log(querySelections);
+
+  runQuery();
 };
 
 // Question 1 ******************************************
@@ -182,3 +184,8 @@ let question3 = () => {
     }
   });
 };
+
+// let runQuery = async () => {
+//   const getResults = await fetch("api/gamp", {});
+//   console.log(getResults);
+// };
