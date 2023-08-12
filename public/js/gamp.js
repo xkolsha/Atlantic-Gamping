@@ -56,7 +56,12 @@ questionsBtn.addEventListener("click", () => {
   question1();
 });
 
-showResults = () => {
+//Show results after questions *************************
+let showResults = () => {
+  gampAnswers.textContent = "";
+  gampQuestions.textContent = "";
+  title.textContent =
+    "Exellent, I think I have found the perfect place for you!";
   console.log(querySelections);
 };
 

@@ -32,10 +32,12 @@
   border: 0;
   box-shadow: 0 0 1rem black;
   border-radius: 10px;
+  font-size: .9rem;
 }
 .modal img {
   width: 80px;
 }
+
 
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.568);
@@ -141,7 +143,7 @@ div .gamp-answers {
     height: 500px;
   }
   .gamp-card .exit-btn {
-    left: 170px;
+    left: 160px;
   }
   #gamp-options {
     flex-direction: column;
