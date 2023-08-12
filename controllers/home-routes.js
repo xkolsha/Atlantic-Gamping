@@ -13,7 +13,6 @@ router.get("/gamp", async (req, res) => {
 });
 
 router.get("/user", async (req, res) => {
-
   res.render("user-settings", { pageTitle: "Settings" });
 });
 
