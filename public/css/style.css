@@ -1,169 +1,309 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-  overflow-x: hidden;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background-color: rgb(255, 252, 246);
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(255, 252, 246);
 }
 
 .topNav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background-color: rgb(185, 201, 229);
-  position: fixed;
-  top: 0;
-  width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(185, 201, 229);
+    position:fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .navElem {
+    float: left;
+    font-weight: bolder;
+  }
+  
+  .navElem a {
+    display: block;
+    color: rgb(92, 67, 67);
+    text-align: center;
+    font-size: 120%;
+    font-weight: bolder;
+    padding: 14px 20px;
+  }
+   
+  .differLi{
+    margin-left: 40%;
+    padding: 0;
+    background-color: rgb(185, 201, 229);
+    position:fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .firstPic{
+    background-image: url("tent-glamping-dusk.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin-top: 4%;
+    position: relative;
+  }
+
+  .welcome{
+    position:absolute;
+    background-color: rgb(47, 47, 47);
+    color: white;
+    margin-top: 10%;
+    opacity: 0.8;
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+  }
+
+  .welcomeT{
+    font-size: 150%;
+    margin-bottom: 0;
+    }
+      
+  .welcomeT2{
+    font-family: 'Megrim', cursive;
+    font-size: 750%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .welcomeT3{
+    font-size: 150%;
+    margin-top: 0;
+  }
+
+  hr.rounded {
+    border-top: 8px solid #bbb;
+    border-radius: 5px;
+  }
+
+  .secondSlide{
+    color: rgb(92, 67, 67);
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 100%;
+    font-weight: bold;
+  }
+
+  .secondSlide > h1, h2 {
+    text-align: justify;
+    font-weight: bold;
+  }
+
+  .secondSlide > p {
+    text-align: justify;
+  }
+
+ 
+  .thirdSlide{
+    color: rgb(92, 67, 67);
+    font-size: 120%;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .thirdSlide > h1{
+   font-size: 250%;
+   text-align: center;
+   border-style: inset;
+   margin-right: 2%;
+   margin-left: 2%;
+  }
+
+  .thirdSlideImages{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 5%;
+  }
+
+  .fourthSlide {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: rgb(92, 67, 67);
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .fourthSlide h1{
+    font-size: 200%;
+    text-align: justify;
+    color: rgb(92, 67, 67);
+    margin-left: 5%;
+    font-weight: bold;
+  }
+
+  .fourthSlide p{
+    font-size: 85%;
+    text-align: justify;
+    color: rgb(92, 67, 67);
+    margin-left: 5%;
+    font-weight: bold;
+  }
+
+  .fifthSlide{
+    font-size: 150%;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-weight: bold;
+  }
+
+  .secondPic{
+    background-image: url("y1.jpg");
+    box-shadow: inset 0 0 0 1000px rgba(255, 149, 56, 0.194);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin-top: 0;
+    position: relative;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .sL{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  .media{
+    background-color: rgb(95, 74, 42);
+    color: white;
+    margin-top: 0;
+    position: relative;
+  }
+  .secondPic h2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: lighter;
+    margin-left: 1%;
+  }
+
+  .L{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .tobox{
+    border:1px solid white;
+    margin-top:10%;
+    margin-bottom: 10%;
+    padding: 2% 2% 2% 2%;
+  }
+
+  input[type='number']{
+    width: 30px;
+    height: 10px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    font-size: 70%;
+    display: inline;
+  }
+  
+  
+  input[type=checkbox]
+  {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  }
+
+.checkboxtext
+{
+  font-size: 100%;
+  display: inline;
 }
 
-.navElem {
-  float: left;
-}
-
-.navElem a {
-  display: block;
-  color: rgb(92, 67, 67);
-  text-align: center;
-  font-size: larger;
-  margin: 0 3px 0 3px;
-}
-
-.differLi {
-  margin-left: 75%;
-}
-
-.firstPic {
-  background-image: url("../images/tent-glamping-dusk.jpg");
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  margin-top: 1.7%;
-  position: relative;
-}
-
-.welcome {
-  position: absolute;
+.form{
   background-color: rgb(47, 47, 47);
   color: white;
-  margin-top: 20%;
-  opacity: 0.9;
-  width: 100%;
+  height: 30px;
+  opacity: 0.8;
+  
 }
 
-.welcomeT {
-  margin-left: 48%;
-}
-
-.welcomeT2 {
-  margin-left: 45%;
-}
-
-.welcomeT3 {
-  margin-left: 42%;
-}
-
-hr.rounded {
-  border-top: 8px solid #bbb;
-  border-radius: 5px;
-}
-
-.secondSlide {
-  color: rgb(92, 67, 67);
-  font-size: 90%;
-}
-
-.secondSlide > h1,
-p {
-  text-align: center;
-}
-
-.thirdSlide {
-  color: rgb(92, 67, 67);
-}
-
-.thirdSlide > h1 {
-  text-align: center;
-  font-size: 50px;
-}
-
-.thirdSlideImages {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.fourthSlide {
-  font-size: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.fifthSlide {
-  font-size: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.secondPic {
-  background-image: url("../images/x1.jpg");
-  box-shadow: inset 0 0 0 1000px rgba(255, 149, 56, 0.194);
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  margin-top: 0;
-  position: relative;
-  color: white;
-  font-size: 90%;
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.sL {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.media {
-  background-color: rgb(95, 74, 42);
-  color: white;
-  margin-top: 0;
-}
-
-.L {
+.seventh{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  font-size: 30%;
 }
 
-.tobox {
-  border: 1px solid white;
-}
-input[type="number"] {
-  width: 40px;
-  height: 15px;
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-  font-size: 50%;
-  display: inline;
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
 }
 
-input[type="checkbox"] {
-  -webkit-transform: scale(2);
-  transform: scale(2);
-  padding: 10px;
+.fa:hover {
+  opacity: 0.8;
 }
 
-.checkboxtext {
-  font-size: 110%;
-  display: inline;
+
+.fa-facebook {
+  background: white;
+  color: rgb(247, 12, 12);
+}
+
+.fa-twitter {
+  background: white;
+  color: rgb(247, 12, 12);
+}
+
+.fa-instagram {
+  background: white;
+  color: rgb(247, 12, 12);
+}
+
+.hate{
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+
+.hate2{
+  margin-top: 20%;
+}
+
+.hate3{
+  margin-right: 2%;
+}
+
+.hate1{
+  position:absolute;
+  margin-top: 5%;
+  margin-left: 35%
+}
+
+.glamp{
+  position: absolute;
+  margin-top: 3%;
+  margin-left: 45%;
 }
