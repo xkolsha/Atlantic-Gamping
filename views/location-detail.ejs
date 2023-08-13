@@ -16,6 +16,19 @@
       <button class="edit-review-btn" data-review-id="<%= review.id %>">Edit Review</button>
     <% }); %>
   <% } %>
+  <form action="/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data">
+    <textarea name="content" placeholder="Write your review..."></textarea>
+    <select name="rating">
+      <option value="1">1 star</option>
+      <option value="2">2 stars</option>
+      <option value="3">3 stars</option>
+      <option value="4">4 stars</option>
+      <option value="5">5 stars</option>
+          </select>
+    <input type="file" name="image" accept="image/*">
+    <button type="submit">Submit Review</button>
+  </form>
+  
   <%-include("partials/foot")  %>
 </body>
 </html>
