@@ -37,12 +37,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // Added routes through connections
 app.use(routes);
 
-// Use the review routes
-app.use("/api/reviews", router);
-
-// Use the location routes
-app.use("/api", locationRoutes);
-
 // Setup for EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
