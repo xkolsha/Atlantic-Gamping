@@ -1,3 +1,5 @@
+
+// Log in Form
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
@@ -5,64 +7,46 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-login').value.trim();
   
     if (email && password) {
-      const response = await fetch('/api/users/login', {
+      const response = await fetch('/api/users', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/user');
       } else {
         alert('Failed to log in.');
       }
     }
   };
   
+  // Sign up formm
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    const creator = document.querySelector('#creator-signup:checked').value;
+    const creator = document.querySelector('#iscreator:checked');
   
-    if (username && email && password) {
+    if (username && creator && email && password) {
       const response = await fetch('/api/users', {
         method: 'POST',
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username, creator, email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace('/');
-        //Return to User Settings Page
-        window.location.href = '/user-settings;'
+        document.location.replace('/user');
+        console.log("repsonse ok");
       } else {
         alert('Failed to sign up.');
       }
     }
-
-    if (username && email && creator && password) {
-        const response = await fetch('/api/users', {
-          method: 'POST',
-          body: JSON.stringify({ username, email, creator, password }),
-          headers: { 'Content-Type': 'application/json' },
-        });
-    
-        if (response.ok) {
-          document.location.replace('/');
-          // Return to Creator Settings Page
-          window.location.href = '/creator-settings;'
-        } else {
-          alert('Failed to sign up.');
-        }
-      }
-
   };
 
 
-  
   document
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);

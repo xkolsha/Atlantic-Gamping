@@ -1,5 +1,7 @@
 const { Review } = require("../models");
 
+const seedReviews = () => Review.bulkCreate(reviewData);
+
 const reviewData = [
   {
     content: "Great place to stay!",
@@ -24,7 +26,5 @@ const reviewData = [
     location_id: 31,
   },
 ];
-
-const seedReviews = () => Review.bulkCreate(reviewData);
 
 module.exports = seedReviews;
