@@ -17,13 +17,13 @@ const sequelize = require("./config/connection");
 
 // Set up sessions with cookies
 const sess = {
-  secret: 'ihaveasecretdonttell!',
+  secret: process.env.COOKIE_SECRET,
   cookie: {
     // Stored in milliseconds
     maxAge: 24 * 60 * 60 * 1000, // expires after 1 day
   },
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: new SequelizeStore({
     db: sequelize,
   }),

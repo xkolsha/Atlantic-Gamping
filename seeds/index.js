@@ -2,12 +2,13 @@ const sequelize = require("../config/connection");
 const seedCategories = require("./category-seeds");
 const seedLocations = require("./location-seeds");
 const seedFeatures = require("./features-seeds");
-const seedUsers = require("./user-seeds");
+//const seedUsers = require("./user-seeds");
+const userData = require('./userData.json');
 const seedReviews = require("./review-seeds");
 
 const seedAll = async () => {
   try {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: true });
     console.log("Database synced");
 
     await seedCategories();
@@ -19,9 +20,11 @@ const seedAll = async () => {
     await seedFeatures();
     console.log("Features seeded");
 
-    await seedUsers();
-    console.log("Users seeded");
-
+    await User.bulkCreate(userData, {
+      individualHooks: true,
+      returning: true,
+    });
+  
     await seedReviews();
     console.log("Reviews seeded");
 
@@ -33,3 +36,12 @@ const seedAll = async () => {
 };
 
 seedAll();
+
+const seedDatabase = async () => {
+  await sequelize.sync({ force: true });
+
+  
+  process.exit(0);
+};
+
+seedDatabase();
