@@ -1,12 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const { Location, Review } = require("../../models"); // Import Review model
+const router = require("express").Router();
+const { Location, Review } = require("../../models");
 
 // Endpoint to list all locations
-router.get("/location", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const locations = await Location.findAll();
-    res.render("location", { locations, pageTitle: "All Locations" });
+    res.render("location", { locations });
   } catch (err) {
     console.error(err);
     res.status(500).send("An error occurred while fetching locations");
@@ -14,7 +13,7 @@ router.get("/location", async (req, res) => {
 });
 
 // Endpoint to view a specific location by ID
-router.get("/location/:id", async (req, res, next) => {
+router.get("/:id", async (req, res) => {
   try {
     const location = await Location.findByPk(req.params.id, {
       include: [{ model: Review }], // Include associated reviews
@@ -22,18 +21,16 @@ router.get("/location/:id", async (req, res, next) => {
     if (!location) {
       return res.status(404).send("Location not found");
     }
-
     const locationPlain = location.get({ plain: true });
     const hasReviews =
       locationPlain.reviews && locationPlain.reviews.length > 0; // Determine if reviews exist
-
     res.render("location-detail", {
       location: locationPlain,
       hasReviews, // Pass hasReviews to the view
-      pageTitle: location.title,
     });
   } catch (err) {
-    next(err); // Pass to centralized error handling
+    console.error(err);
+    res.status(500).send("An error occurred while fetching the location");
   }
 });
 

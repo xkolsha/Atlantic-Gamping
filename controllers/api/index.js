@@ -10,6 +10,6 @@ router.use("/about", aboutRoutes);
 router.use("/gamp", gampRoutes);
 router.use("/review", reviewRoutes); // Using the reviewRoutes router
 router.use("/users", userRoutes);
-router.use("location", locationRoutes);
+router.use("/location", locationRoutes);
 
 module.exports = router;

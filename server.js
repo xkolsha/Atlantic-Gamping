@@ -6,8 +6,6 @@ const path = require("path");
 const chalk = require("chalk");
 const PORT = process.env.PORT || 3001;
 const routes = require("./controllers");
-const { findReviews, router } = require("./controllers/api/review-routes");
-const locationRoutes = require("./controllers/api/location-routes");
 
 // Initialize Express.js App
 const app = express();
@@ -36,12 +34,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Added routes through connections
 app.use(routes);
-
-// Use the review routes
-app.use("/api/reviews", router);
-
-// Use the location routes
-app.use("/api", locationRoutes);
 
 // Setup for EJS
 app.set("view engine", "ejs");
