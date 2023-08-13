@@ -47,6 +47,10 @@ app.use("/api", locationRoutes);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use("*", (req, res) => {
+  res.send("<h1>Wrong Route!</h1>");
+});
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(
