@@ -23,6 +23,7 @@ User.init(
     iscreator: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false, //default value for the checkbox (unchecked)
     },
     email: {
       type: DataTypes.STRING,

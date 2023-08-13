@@ -2,7 +2,7 @@ const sequelize = require("../config/connection");
 const seedCategories = require("./category-seeds");
 const seedLocations = require("./location-seeds");
 const seedFeatures = require("./features-seeds");
-//const seedUsers = require("./user-seeds");
+const { User } = require('../models');
 const userData = require('./userData.json');
 const seedReviews = require("./review-seeds");
 
@@ -36,12 +36,3 @@ const seedAll = async () => {
 };
 
 seedAll();
-
-const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
-
-  
-  process.exit(0);
-};
-
-seedDatabase();
