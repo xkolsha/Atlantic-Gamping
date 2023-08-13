@@ -36,6 +36,7 @@ app.use("/uploads", express.static("uploads")); // Serve uploaded images
 // Added routes through connections
 app.use(routes);
 
+
 // Setup for EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
