@@ -16,7 +16,7 @@
       <button class="edit-review-btn" data-review-id="<%= review.id %>">Edit Review</button>
     <% }); %>
   <% } %>
-  <form action="/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data">
+  <form id="review-form" action="/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data" style="display: none;">
     <textarea name="content" placeholder="Write your review..."></textarea>
     <select name="rating">
       <option value="1">1 star</option>
@@ -24,11 +24,17 @@
       <option value="3">3 stars</option>
       <option value="4">4 stars</option>
       <option value="5">5 stars</option>
-          </select>
+    </select>
     <input type="file" name="image" accept="image/*">
     <button type="submit">Submit Review</button>
   </form>
-  
+
+  <script>
+    document.getElementById('add-review-btn').addEventListener('click', function() {
+      document.getElementById('review-form').style.display = 'block';
+    });
+  </script>
+
   <%-include("partials/foot")  %>
 </body>
 </html>
