@@ -137,7 +137,7 @@ let question2 = () => {
         querySelections.push("num_beds: 2");
         question3();
       } else {
-        querySelections.push("num_guests: >2");
+        querySelections.push("num_guests: 6");
         question3();
       }
       e.target.innerText = "";
