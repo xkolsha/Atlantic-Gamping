@@ -6,8 +6,6 @@ const path = require("path");
 const chalk = require("chalk");
 const PORT = process.env.PORT || 3001;
 const routes = require("./controllers");
-const { findReviews, router } = require("./controllers/api/review-routes");
-const locationRoutes = require("./controllers/api/location-routes");
 
 // Initialize Express.js App
 const app = express();

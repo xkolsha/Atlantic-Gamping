@@ -1,8 +1,7 @@
 const router = require("express").Router();
 const aboutRoutes = require("./about-routes");
 const gampRoutes = require("./gamp-routes");
-const reviewRoutes = require("./review-routes");
-// const { router: reviewRoutes } = require("./review-routes"); // Importing the router
+const { router: reviewRoutes } = require("./review-routes"); // Importing the router
 const userRoutes = require("./user-routes");
 const locationRoutes = require("./location-routes");
 
