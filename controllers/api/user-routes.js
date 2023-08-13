@@ -1,13 +1,51 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User } = require("../../models/User");
 
+
+/// Login
+router.post('/user', async (req, res) => {
+  try {
+    const dbUserData = await User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!dbUserData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password. Please try again!' });
+      return;
+    }
+
+    const validPassword = await dbUserData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password. Please try again!' });
+    }
+
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.loggedIn = true;
+
+      res
+        .status(200)
+        .json({ user: dbUserData, message: 'You are now logged in!' });
+        res.render("settings", { settings });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // CREATE new user
-router.post('/', async (req, res) => {
+router.post('/user', async (req, res) => {
   try {
     const dbUserData = await User.create({
       username: req.body.username,
-      //iscreator: req.body.iscreator,
       email: req.body.email,
       password: req.body.password,
     });
@@ -16,6 +54,7 @@ router.post('/', async (req, res) => {
       req.session.loggedIn = true;
 
       res.status(200).json(dbUserData);
+      res.render("settings", { settings });
     });
   } catch (err) {
     console.log(err);
@@ -23,44 +62,14 @@ router.post('/', async (req, res) => {
   }
 });
 
-// User Login
-router.post('/login', async (req, res) => {
-  try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
 
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
-
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
 
 // Logout
-router.post("/logout", (req, res) => {
+router.post("/user", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
+      res.render("login", { login });
     });
   } else {
     res.status(404).end();

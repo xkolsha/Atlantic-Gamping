@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Added routes through connections
 app.use(routes);
 
+
 // Setup for EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

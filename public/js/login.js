@@ -7,41 +7,41 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-login').value.trim();
   
     if (email && password) {
-      const response = await fetch('/api/users', {
+      const response = await fetch('/api/user', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace('/user');
+        document.location.replace('/settings');
       } else {
-        alert('Failed to log in.');
+        //alert('Failed to log in.');
+        document.location.replace('/login');
       }
     }
   };
   
-  // Sign up formm
+  // Sign up form
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    const creator = document.querySelector('#iscreator:checked');
   
-    if (username && creator && email && password) {
+    if (username && email && password) {
       const response = await fetch('/api/users', {
         method: 'POST',
-        body: JSON.stringify({ username, creator, email, password }),
+        body: JSON.stringify({ username, email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace('/user');
+        document.location.replace('/settings');
         console.log("repsonse ok");
       } else {
-        alert('Failed to sign up.');
+        document.location.replace('/login');
       }
     }
   };

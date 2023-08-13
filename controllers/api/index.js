@@ -9,7 +9,7 @@ const locationRoutes = require("./location-routes");
 router.use("/about", aboutRoutes);
 router.use("/gamp", gampRoutes);
 router.use("/review", reviewRoutes); // Using the reviewRoutes router
-router.use("/users", userRoutes);
+router.use("/user", userRoutes);
 router.use("/location", locationRoutes);
 
 module.exports = router;
