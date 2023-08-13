@@ -17,6 +17,10 @@ Review.init(
         max: 5,
       },
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     location_id: {
       type: DataTypes.INTEGER,
       references: {

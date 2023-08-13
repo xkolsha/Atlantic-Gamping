@@ -1,31 +1,26 @@
 [
     {
       "username": "Sal",
-      "iscreator": "true",
       "email": "sal@hotmail.com",
       "password": "password12345"
     },
     {
       "username": "Kethchup Chips Woman",
-      "iscreator": "true",
       "email": "ketchupchipswoman@example.com",
       "password": "password12345"
     },
     {
       "username": "Amiko",
-      "iscreator": "true",
       "email": "amiko2k20@aol.com",
       "password": "password12345"
     },
     {
       "username": "Maple Man",
-      "iscreator": "true",
       "email": "mapleman@example.com",
       "password": "password12345"
     },
     {
       "username": "Blake",
-      "iscreator": "true",
       "email": "the_blake@yahoo.com",
       "password": "password12345"
     }

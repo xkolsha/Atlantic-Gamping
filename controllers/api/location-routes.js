@@ -1,5 +1,8 @@
-const router = require("express").Router();
+const express = require("express");
+const multer = require("multer");
 const { Location, Review } = require("../../models");
+const router = express.Router();
+const upload = multer({ dest: "uploads/" });
 
 // Endpoint to list all locations
 router.get("/", async (req, res) => {
@@ -16,7 +19,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const location = await Location.findByPk(req.params.id, {
-      include: [{ model: Review }], // Include associated reviews
+      include: [{ model: Review }],
     });
     if (!location) {
       return res.status(404).send("Location not found");
@@ -33,5 +36,30 @@ router.get("/:id", async (req, res) => {
     res.status(500).send("An error occurred while fetching the location");
   }
 });
+
+// Endpoint to submit a review for a specific location
+router.post(
+  "/locations/:id/reviews",
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const locationId = req.params.id;
+      const { content, rating } = req.body;
+      const image = req.file ? req.file.filename : null;
+
+      await Review.create({
+        content,
+        rating,
+        image,
+        location_id: locationId,
+      });
+
+      res.redirect(`/location/${locationId}`);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("An error occurred while submitting the review");
+    }
+  }
+);
 
 module.exports = router;

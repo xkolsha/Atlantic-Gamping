@@ -31,9 +31,11 @@ app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads", express.static("uploads")); // Serve uploaded images
 
 // Added routes through connections
 app.use(routes);
+
 
 // Setup for EJS
 app.set("view engine", "ejs");
