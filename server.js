@@ -6,6 +6,7 @@ const path = require("path");
 const chalk = require("chalk");
 const PORT = process.env.PORT || 3001;
 const routes = require("./controllers");
+const methodOverride = require("method-override");
 
 // Initialize Express.js App
 const app = express();
@@ -32,10 +33,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static("uploads")); // Serve uploaded images
+app.use(methodOverride("_method"));
 
 // Added routes through connections
 app.use(routes);
-
 
 // Setup for EJS
 app.set("view engine", "ejs");
