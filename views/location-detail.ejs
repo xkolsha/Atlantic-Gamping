@@ -4,6 +4,7 @@
   <h1><%= location.title %></h1>
   <p>City: <%= location.city %></p>
   <p>Province: <%= location.province %></p>
+  
   <% location.reviews.forEach(review => { %>
     <%-include("partials/review", { review: review })  %> <!-- Pass the review variable -->
     <!-- Edit Review Button for each review -->
@@ -29,12 +30,18 @@
 
   <script>
     const locationId = '<%= location.id %>'; // Extract the location ID from the server-side variable
+    const reviewForm = document.getElementById('review-form'); // Corrected form ID
   
     // Handling the Add Review button click
     document.getElementById('add-review-btn').addEventListener('click', function() {
-      const reviewForm = document.getElementById('review-form'); // Corrected form ID
       reviewForm.style.display = 'block';
-      reviewForm.action = `/api/reviews/locations/${locationId}/reviews`; // Set action for adding a review
+      reviewForm.action = `/api/reviews/locations/${locationId}/reviews`;
+      reviewForm.method = 'post';
+      // Optional: Clear the hidden _method input if present
+      const methodInput = reviewForm.querySelector('input[name="_method"]');
+      if (methodInput) {
+        methodInput.remove();
+      }
     });
   
     // Handling the Edit Review buttons click
@@ -47,9 +54,20 @@
           .then(response => response.json())
           .then(reviewData => {
             // Populate the review form with the existing review data
-            const reviewForm = document.getElementById('review-form'); // Corrected form ID
             reviewForm.style.display = 'block';
+            reviewForm.method = 'post'; // Use POST method
             reviewForm.action = `/api/reviews/locations/${locationId}/reviews/${reviewId}`; // Update the form's action for editing
+  
+            // Specify PUT method using hidden input
+            let methodInput = reviewForm.querySelector('input[name="_method"]');
+            if (!methodInput) {
+              methodInput = document.createElement('input');
+              methodInput.type = 'hidden';
+              methodInput.name = '_method';
+              reviewForm.appendChild(methodInput);
+            }
+            methodInput.value = 'PUT';
+  
             reviewForm.querySelector('textarea[name="content"]').value = reviewData.content;
             reviewForm.querySelector('select[name="rating"]').value = reviewData.rating;
           })
@@ -59,7 +77,7 @@
       });
     });
   </script>
-  
+    
   <%-include("partials/foot")  %>
 </body>
 </html>
