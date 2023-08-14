@@ -184,6 +184,7 @@ let question3 = () => {
 };
 
 const runQuery = () => {
-  const queryData = fetch("/api/gamp", (req, res) => {});
-  console.log(querySelections);
+  const queryData = fetch("/api/gamp", (req, res) => {
+    // console.log(querySelections);
+  });
 };
