@@ -15,7 +15,7 @@
       <button class="edit-review-btn" data-review-id="<%= review.id %>">Edit Review</button>
     <% }); %>
   <% } %>
-  <form id="review-form" action="/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data" style="display: none;">
+  <form id="review-form" action="/api/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data" style="display: none;">
     <textarea name="content" placeholder="Write your review..."></textarea>
     <select name="rating">
       <option value="1">1 star</option>
@@ -28,36 +28,36 @@
     <button type="submit">Submit Review</button>
   </form>
 
-  <script>
-    const locationId = '<%= location.id %>'; // Extract the location ID from the server-side variable
+<script>
+  const locationId = '<%= location.id %>'; // Extract the location ID from the server-side variable
 
-    // Handling the Add Review button click
-    document.getElementById('add-review-btn').addEventListener('click', function() {
-      document.getElementById('review-form').style.display = 'block';
+  // Handling the Add Review button click
+  document.getElementById('add-review-btn').addEventListener('click', function() {
+    document.getElementById('review-form').style.display = 'block';
+  });
+
+  // Handling the Edit Review buttons click
+  document.querySelectorAll('.edit-review-btn').forEach(function(button) {
+    button.addEventListener('click', function() {
+      const reviewId = button.getAttribute('data-review-id');
+
+      // Fetch the review data by reviewId
+      fetch(`/api/locations/${locationId}/reviews/${reviewId}`) // Update the fetch path
+        .then(response => response.json())
+        .then(reviewData => {
+          // Populate the review form with the existing review data
+          const reviewForm = document.getElementById('review-form');
+          reviewForm.style.display = 'block';
+          reviewForm.action = `/api/locations/${locationId}/reviews/${reviewId}`; // Update the form's action
+          reviewForm.querySelector('textarea[name="content"]').value = reviewData.content;
+          reviewForm.querySelector('select[name="rating"]').value = reviewData.rating;
+        })
+        .catch(error => {
+          console.error("Error fetching review:", error);
+        });
     });
-
-    // Handling the Edit Review buttons click
-    document.querySelectorAll('.edit-review-btn').forEach(function(button) {
-      button.addEventListener('click', function() {
-        const reviewId = button.getAttribute('data-review-id');
-
-        // Fetch the review data by reviewId
-        fetch(`/locations/reviews/${reviewId}`)
-          .then(response => response.json())
-          .then(reviewData => {
-            // Populate the review form with the existing review data
-            const reviewForm = document.getElementById('review-form');
-            reviewForm.style.display = 'block';
-            reviewForm.action = `/locations/${locationId}/reviews/${reviewId}`; // Update the form's action to point to the edit endpoint
-            reviewForm.querySelector('textarea[name="content"]').value = reviewData.content;
-            reviewForm.querySelector('select[name="rating"]').value = reviewData.rating;
-          })
-          .catch(error => {
-            console.error("Error fetching review:", error);
-          });
-      });
-    });
-  </script>
+  });
+</script>
 
   <%-include("partials/foot")  %>
 </body>

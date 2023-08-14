@@ -1,15 +1,17 @@
 const router = require("express").Router();
+
+// Import API Routes
 const aboutRoutes = require("./about-routes");
 const gampRoutes = require("./gamp-routes");
 const reviewRoutes = require("./review-routes");
 const userRoutes = require("./user-routes");
 const locationRoutes = require("./location-routes");
 
-// api routes
+// API Routes
 router.use("/about", aboutRoutes);
 router.use("/gamp", gampRoutes);
-router.use("/review", reviewRoutes);
+router.use("/reviews", reviewRoutes); // Using reviewRoutes
 router.use("/user", userRoutes);
-router.use("/location", locationRoutes);
+router.use("/locations", locationRoutes);
 
 module.exports = router;

@@ -1,5 +1,17 @@
 const router = require("express").Router();
 const Review = require("../../models/Review");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // specify the folder where files will be stored
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname); // create a unique filename
+  },
+});
+
+const upload = multer({ storage: storage });
 
 // Endpoint to edit a review by review ID
 router.put("/:reviewId", async (req, res) => {
@@ -37,5 +49,28 @@ router.get("/:reviewId", async (req, res) => {
     res.status(500).send("An error occurred while fetching the review");
   }
 });
+
+// Endpoint to post a review for a specific location by ID
+router.post(
+  "/api/locations/:id/reviews",
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const locationId = req.params.id;
+      const { content, rating } = req.body;
+      const image = req.file ? req.file.filename : null;
+      await Review.create({
+        content,
+        rating,
+        image,
+        location_id: locationId,
+      });
+      res.redirect(`/api/locations/${locationId}`); // Redirect back to the location detail
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("An error occurred while submitting the review");
+    }
+  }
+);
 
 module.exports = router;
