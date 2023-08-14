@@ -2,8 +2,30 @@ const router = require("express").Router();
 const { User } = require("../../models/User");
 
 
+// CREATE new user
+router.post('/', async (req, res) => {
+  try {
+    const dbUserData = await User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+      console.log('new user created!')
+      res.render("settings", { settings });
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 /// Login
-router.post('/user', async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
@@ -33,6 +55,7 @@ router.post('/user', async (req, res) => {
       res
         .status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });
+        console.log('Successfully logged in!')
         res.render("settings", { settings });
     });
   } catch (err) {
@@ -41,39 +64,19 @@ router.post('/user', async (req, res) => {
   }
 });
 
-// CREATE new user
-router.post('/user', async (req, res) => {
-  try {
-    const dbUserData = await User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    });
-
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res.status(200).json(dbUserData);
-      res.render("settings", { settings });
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-
-
 // Logout
-router.post("/user", (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
+      console.log("you are logged out")
       res.render("login", { login });
     });
   } else {
     res.status(404).end();
   }
 });
+
+
 
 module.exports = router;
