@@ -8,7 +8,6 @@ const userRoutes = require("./user-routes");
 const locationRoutes = require("./location-routes");
 const featuresRoutes = require("./features-routes");
 
-
 // api routes
 router.use("/features", featuresRoutes);
 router.use("/about", aboutRoutes);
