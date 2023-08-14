@@ -1,29 +1,41 @@
 const router = require("express").Router();
 const Review = require("../../models/Review");
 
-// Function to find all reviews
-const findReviews = () => {
-  return new Promise((resolve, reject) => {
-    Review.findAll()
-      .then((reviews) => resolve(reviews))
-      .catch((err) => reject(err));
-  });
-};
-
-router.get("/location/:locationId", async (req, res) => {
+// Endpoint to edit a review by review ID
+router.put("/:reviewId", async (req, res) => {
   try {
-    const locationId = req.params.locationId;
-    const reviews = await Review.findAll({
-      where: { location_id: locationId },
-    });
-    res.render("test", { pageTitle: "Reviews", reviews: reviews });
+    const reviewId = req.params.reviewId;
+    const { content, rating } = req.body;
+
+    const review = await Review.findByPk(reviewId);
+    if (!review) {
+      return res.status(404).send("Review not found");
+    }
+
+    review.content = content;
+    review.rating = rating;
+    await review.save();
+
+    res.status(200).send("Review updated successfully");
   } catch (err) {
-    res.status(500).send("An error occurred");
+    console.error(err);
+    res.status(500).send("An error occurred while updating the review");
   }
 });
 
-// Exporting both the findReviews function and the router
-module.exports = {
-  findReviews,
-  router,
-};
+// Endpoint to get a specific review by review ID
+router.get("/:reviewId", async (req, res) => {
+  try {
+    const reviewId = req.params.reviewId;
+    const review = await Review.findByPk(reviewId);
+    if (!review) {
+      return res.status(404).send("Review not found");
+    }
+    res.json(review);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while fetching the review");
+  }
+});
+
+module.exports = router;

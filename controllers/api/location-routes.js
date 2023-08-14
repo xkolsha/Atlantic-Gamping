@@ -26,10 +26,10 @@ router.get("/:id", async (req, res) => {
     }
     const locationPlain = location.get({ plain: true });
     const hasReviews =
-      locationPlain.reviews && locationPlain.reviews.length > 0; // Determine if reviews exist
+      locationPlain.reviews && locationPlain.reviews.length > 0;
     res.render("location-detail", {
       location: locationPlain,
-      hasReviews, // Pass hasReviews to the view
+      hasReviews,
     });
   } catch (err) {
     console.error(err);
@@ -38,28 +38,22 @@ router.get("/:id", async (req, res) => {
 });
 
 // Endpoint to submit a review for a specific location
-router.post(
-  "/locations/:id/reviews",
-  upload.single("image"),
-  async (req, res) => {
-    try {
-      const locationId = req.params.id;
-      const { content, rating } = req.body;
-      const image = req.file ? req.file.filename : null;
-
-      await Review.create({
-        content,
-        rating,
-        image,
-        location_id: locationId,
-      });
-
-      res.redirect(`/location/${locationId}`);
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("An error occurred while submitting the review");
-    }
+router.post("/:id/reviews", upload.single("image"), async (req, res) => {
+  try {
+    const locationId = req.params.id;
+    const { content, rating } = req.body;
+    const image = req.file ? req.file.filename : null;
+    await Review.create({
+      content,
+      rating,
+      image,
+      location_id: locationId,
+    });
+    res.redirect(`/locations/${locationId}`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while submitting the review");
   }
-);
+});
 
 module.exports = router;

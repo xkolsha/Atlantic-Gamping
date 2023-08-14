@@ -4,6 +4,9 @@ const Location = require("./Location");
 const Features = require("./Features");
 const Review = require("./Review");
 
+Location.hasMany(Review, { foreignKey: "location_id" });
+Review.belongsTo(Location, { foreignKey: "location_id" });
+
 Category.hasMany(Location, {
   foreignKey: "category_id",
 });
