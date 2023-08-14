@@ -183,8 +183,13 @@ let question3 = () => {
   });
 };
 
-const runQuery = () => {
-  const queryData = fetch("/api/gamp", (req, res) => {
-    // console.log(querySelections);
-  });
+const runQuery = async () => {
+  const response = await fetch("http://localhost:3001/api/locations/");
+  const data = await response.json();
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].city === "Grand Manan") {
+      console.log(data[i].city);
+    }
+  }
 };
