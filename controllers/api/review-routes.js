@@ -52,7 +52,7 @@ router.get("/:reviewId", async (req, res) => {
 
 // Endpoint to post a review for a specific location by ID
 router.post(
-  "/api/locations/:id/reviews",
+  "/locations/:id/reviews",
   upload.single("image"),
   async (req, res) => {
     try {
