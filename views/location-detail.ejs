@@ -14,7 +14,7 @@
   <!-- Add Review Button -->
   <button id="add-review-btn">Add Review</button>
   <form id="review-form" action="/api/reviews/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="locationId" value="<%= location.id %>">
+    <input type="hidden" name="_method" value="PUT">
     <textarea name="content" placeholder="Write your review..."></textarea>
     <select name="rating">
       <option value="1">1 star</option>

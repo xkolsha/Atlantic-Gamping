@@ -13,28 +13,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Endpoint to edit a review by review ID
-router.put("/:reviewId", async (req, res) => {
-  try {
-    const reviewId = req.params.reviewId;
-    const { content, rating } = req.body;
-
-    const review = await Review.findByPk(reviewId);
-    if (!review) {
-      return res.status(404).send("Review not found");
-    }
-
-    review.content = content;
-    review.rating = rating;
-    await review.save();
-
-    res.status(200).send("Review updated successfully");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("An error occurred while updating the review");
-  }
-});
-
 // Endpoint to get a specific review by review ID
 router.get("/:reviewId", async (req, res) => {
   try {
@@ -74,16 +52,18 @@ router.post(
 );
 
 // Endpoint to update a review for a specific location by ID
+
 router.put(
   "/locations/:locationId/reviews/:reviewId",
   upload.single("image"),
   async (req, res) => {
     try {
+      console.log("Request body:", req.body); // Log the request body
+      console.log("Request params:", req.params); // Log the request params
       const reviewId = req.params.reviewId;
       const locationId = req.params.locationId;
       const { content, rating } = req.body;
       const image = req.file ? req.file.filename : null;
-
       const review = await Review.findByPk(reviewId);
       if (!review) {
         return res.status(404).send("Review not found");
@@ -96,7 +76,7 @@ router.put(
 
       res.redirect(`/api/locations/${locationId}`); // Redirect back to the location detail
     } catch (err) {
-      console.error(err);
+      console.error(err); // Log the error
       res.status(500).send("An error occurred while updating the review");
     }
   }
