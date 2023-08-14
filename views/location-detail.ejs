@@ -4,19 +4,17 @@
   <h1><%= location.title %></h1>
   <p>City: <%= location.city %></p>
   <p>Province: <%= location.province %></p>
+  
   <% location.reviews.forEach(review => { %>
     <%-include("partials/review", { review: review })  %> <!-- Pass the review variable -->
+    <!-- Edit Review Button for each review -->
+    <button class="edit-review-btn" data-review-id="<%= review.id %>">Edit Review</button>
   <% }); %>
-  <% if (!hasReviews) { %>
-    <!-- Add Review Button -->
-    <button id="add-review-btn">Add Review</button>
-  <% } else { %>
-    <% location.reviews.forEach(review => { %>
-      <!-- Edit Review Button for each review -->
-      <button class="edit-review-btn" data-review-id="<%= review.id %>">Edit Review</button>
-    <% }); %>
-  <% } %>
-  <form id="review-form" action="/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data" style="display: none;">
+
+  <!-- Add Review Button -->
+  <button id="add-review-btn">Add Review</button>
+  <form id="review-form" action="/api/reviews/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="_method" value="PUT">
     <textarea name="content" placeholder="Write your review..."></textarea>
     <select name="rating">
       <option value="1">1 star</option>
@@ -28,13 +26,60 @@
     <input type="file" name="image" accept="image/*">
     <button type="submit">Submit Review</button>
   </form>
+  
 
   <script>
+    const locationId = '<%= location.id %>'; // Extract the location ID from the server-side variable
+    const reviewForm = document.getElementById('review-form'); // Corrected form ID
+  
+    // Handling the Add Review button click
     document.getElementById('add-review-btn').addEventListener('click', function() {
-      document.getElementById('review-form').style.display = 'block';
+      reviewForm.style.display = 'block';
+      reviewForm.action = `/api/reviews/locations/${locationId}/reviews`;
+      reviewForm.method = 'post';
+      // Optional: Clear the hidden _method input if present
+      const methodInput = reviewForm.querySelector('input[name="_method"]');
+      if (methodInput) {
+        methodInput.remove();
+      }
+    });
+  
+    // Handling the Edit Review buttons click
+    document.querySelectorAll('.edit-review-btn').forEach(function(button) {
+      button.addEventListener('click', function() {
+        const reviewId = button.getAttribute('data-review-id');
+  
+        // Fetch the review data by reviewId
+        fetch(`/api/reviews/${reviewId}`) // Update the fetch path
+          .then(response => response.json())
+          .then(reviewData => {
+            // Populate the review form with the existing review data
+            reviewForm.style.display = 'block';
+            reviewForm.method = 'post'; // Use POST method
+            reviewForm.action = `/api/reviews/locations/${locationId}/reviews/${reviewId}`; // Update the form's action for editing
+  
+            // Specify PUT method using hidden input
+            let methodInput = reviewForm.querySelector('input[name="_method"]');
+            if (!methodInput) {
+              methodInput = document.createElement('input');
+              methodInput.type = 'hidden';
+              methodInput.name = '_method';
+              reviewForm.appendChild(methodInput);
+            }
+            methodInput.value = 'PUT';
+  
+            reviewForm.querySelector('textarea[name="content"]').value = reviewData.content;
+            reviewForm.querySelector('select[name="rating"]').value = reviewData.rating;
+          })
+          .catch(error => {
+            console.error("Error fetching review:", error);
+          });
+      });
     });
   </script>
-
+    
   <%-include("partials/foot")  %>
 </body>
 </html>
+
+
