@@ -15,20 +15,20 @@ const app = express();
 const sequelize = require("./config/connection");
 
 // Set up sessions with cookies
-const sess = {
-  secret: process.env.COOKIE_SECRET,
-  cookie: {
-    // Stored in milliseconds
-    maxAge: 24 * 60 * 60 * 1000, // expires after 1 day
-  },
-  resave: false,
-  saveUninitialized: false,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
-};
+// const sess = {
+//   secret: process.env.COOKIE_SECRET,
+//   cookie: {
+//     // Stored in milliseconds
+//     maxAge: 24 * 60 * 60 * 1000, // expires after 1 day
+//   },
+//   resave: false,
+//   saveUninitialized: false,
+//   store: new SequelizeStore({
+//     db: sequelize,
+//   }),
+// };
 
-app.use(session(sess));
+// app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -43,7 +43,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use("*", (req, res) => {
-  res.send("<h1>Wrong Route!</h1>");
+  res.status(400).send("<h1>Wrong Route!</h1>");
 });
 
 sequelize.sync({ force: false }).then(() => {

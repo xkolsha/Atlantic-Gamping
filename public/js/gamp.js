@@ -184,12 +184,10 @@ let question3 = () => {
 };
 
 const runQuery = async () => {
-  const response = await fetch("http://localhost:3001/api/locations/");
+  const response = await fetch("http://localhost:3001/api/location");
   const data = await response.json();
 
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].city === "Grand Manan") {
-      console.log(data[i].city);
-    }
+  for (let i = 0; i < querySelections.length; i++) {
+    console.log(querySelections[i]);
   }
 };
