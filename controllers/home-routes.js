@@ -5,6 +5,10 @@ router.get("/", async (req, res) => {
   res.render("index", { pageTitle: "Home" });
 });
 
+router.get("/about", async (req, res) => {
+  res.render("about", { pageTitle: "About" });
+});
+
 router.get("/login", async (req, res) => {
   res.render("login", { pageTitle: "Login" });
 });
