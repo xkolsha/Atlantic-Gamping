@@ -4,6 +4,8 @@
   <h1><%= location.title %></h1>
   <p>City: <%= location.city %></p>
   <p>Province: <%= location.province %></p>
+  <p>description: <%= location.description %></p>
+  <img src="<%= location.img_url %>" style="width: 30%;">
   
   <% location.reviews.forEach(review => { %>
     <%-include("partials/review", { review: review })  %> <!-- Pass the review variable -->
