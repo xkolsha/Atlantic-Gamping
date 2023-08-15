@@ -13,7 +13,7 @@
 
   <!-- Add Review Button -->
   <button id="add-review-btn">Add Review</button>
-  <form id="review-form" action="/api/reviews/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data">
+  <form id="review-form" action="/api/locations/<%= location.id %>/reviews" method="post" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PUT">
     <textarea name="content" placeholder="Write your review..."></textarea>
     <select name="rating">
@@ -35,7 +35,7 @@
     // Handling the Add Review button click
     document.getElementById('add-review-btn').addEventListener('click', function() {
       reviewForm.style.display = 'block';
-      reviewForm.action = `/api/reviews/locations/${locationId}/reviews`;
+      reviewForm.action = `/api/locations/${locationId}/reviews`;
       reviewForm.method = 'post';
       // Optional: Clear the hidden _method input if present
       const methodInput = reviewForm.querySelector('input[name="_method"]');
@@ -56,7 +56,7 @@
             // Populate the review form with the existing review data
             reviewForm.style.display = 'block';
             reviewForm.method = 'post'; // Use POST method
-            reviewForm.action = `/api/reviews/locations/${locationId}/reviews/${reviewId}`; // Update the form's action for editing
+            reviewForm.action = `/api/reviews/${reviewId}`; // Update the form's action for editing
   
             // Specify PUT method using hidden input
             let methodInput = reviewForm.querySelector('input[name="_method"]');
