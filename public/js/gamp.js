@@ -204,8 +204,10 @@ let question3 = () => {
 
 // function to query location
 const runQuery = async () => {
-  const response = await fetch("http://localhost:3001/api/gamp");
-  // const response = await fetch("https://atlantic-glamping-7ef96dd8177e.herokuapp.com/api/gamp");
+  // const response = await fetch("http://localhost:3001/api/gamp");
+  const response = await fetch(
+    "https://atlantic-glamping-7ef96dd8177e.herokuapp.com/api/gamp"
+  );
 
   const data = await response.json();
 
