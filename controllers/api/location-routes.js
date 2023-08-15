@@ -8,7 +8,7 @@ const upload = multer({ dest: "uploads/" });
 router.get("/", async (req, res) => {
   try {
     const locations = await Location.findAll();
-    res.json(locations);
+    // res.json(locations);
     res.render("location", { locations });
   } catch (err) {
     console.error(err);

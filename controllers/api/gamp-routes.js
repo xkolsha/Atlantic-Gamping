@@ -12,6 +12,16 @@ router.get("/", async (req, res) => {
     res.status(500).send("An error occurred while fetching locations");
   }
 });
+router.get("/location", async (req, res) => {
+  try {
+    const locationData = await Location.findAll();
+
+    res.json(locationData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while fetching locations");
+  }
+});
 
 // router.get("/", (req, res) => {
 //   Location.findAll({

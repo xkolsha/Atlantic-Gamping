@@ -11,7 +11,8 @@ let gampAnswers = document.querySelector(".gamp-answers");
 let qSection = document.querySelector("#q-section");
 
 // query selections
-let querySelections = [];
+// let querySelections = [];
+let querySelections = {};
 
 // Questions with options
 const questions = [
@@ -88,18 +89,26 @@ let question1 = () => {
       selection = e.target.innerText;
       console.log(selection);
       if (selection === "Not very Adventurous") {
-        querySelections.push("wifi: true", "cell_service: true");
+        // querySelections.push(["wifi: true"], ["cell_service: true"]);
+        querySelections.wifi = true;
+        querySelections.cell_service = true;
+
         question2();
       } else if (selection === "Kinda Adventurous") {
-        querySelections.push("shower: false");
+        // querySelections.push(["shower: false"]);
+        querySelections.shower = false;
         question2();
       } else {
-        querySelections.push(
-          "wifi: false",
-          "cell_service: false",
-          "electricity: false",
-          "shower: false"
-        );
+        // querySelections.push(
+        //   "wifi: false",
+        //   "cell_service: false",
+        //   "electricity: false",
+        //   "shower: false"
+        // );
+        querySelections.wifi = false;
+        querySelections.cell_service = false;
+        querySelections.electricity = false;
+        querySelections.shower = false;
         question2();
       }
       e.target.innerText = "";
@@ -131,13 +140,17 @@ let question2 = () => {
       selection = e.target.innerText;
       console.log(selection);
       if (selection === "Yes, just me") {
-        querySelections.push("num_guests: 2", "num_beds: 1");
+        // querySelections.push("num_guests: 2", "num_beds: 1");
+        querySelections.num_guests = 2;
+        querySelections.num_beds = 1;
         question3();
       } else if (selection === "Me and my partner") {
-        querySelections.push("num_beds: 2");
+        // querySelections.push("num_beds: 2");
+        querySelections.num_beds = 2;
         question3();
       } else {
-        querySelections.push("num_guests: 6");
+        // querySelections.push("num_guests: 6");
+        querySelections.num_guests = 6;
         question3();
       }
       e.target.innerText = "";
@@ -169,13 +182,16 @@ let question3 = () => {
       selection = e.target.innerText;
       console.log(selection);
       if (selection === "Not my thing") {
-        querySelections.push("waterfront: false");
+        // querySelections.push("waterfront: false");
+        querySelections.waterfront = false;
         showResults();
       } else if (selection === "does not matter") {
-        querySelections.push("fireplace: true");
+        // querySelections.push("fireplace: true");
+        querySelections.fireplace = true;
         showResults();
       } else {
-        querySelections.push("waterfront: true");
+        // querySelections.push("waterfront: true");
+        querySelections.waterfront = true;
         showResults();
       }
       e.target.innerText = "";
@@ -183,11 +199,30 @@ let question3 = () => {
   });
 };
 
+// function to query location
 const runQuery = async () => {
-  const response = await fetch("http://localhost:3001/api/location");
+  const response = await fetch("http://localhost:3001/api/gamp");
   const data = await response.json();
+  // console.log(querySelections);
+  // console.log(data);
+  // console.log(querySelections[0]);
+  // let dataValues = Object.values(data);
+  // let queryValues = Object.values(querySelections);
 
-  for (let i = 0; i < querySelections.length; i++) {
-    console.log(querySelections[i]);
-  }
+  // for (let i = 0; i < data.length; i++) {
+  //   for (let j = 0; j < data.length; j++) {
+  //     console.log([j], "inner loop");
+  //   }
+
+  //   console.log([i], "outerloop");
+  // }
+
+  //   for (let i = 0; i < data.length; i++) {
+  //     for (let j = 0; j < querySelections.length; j++) {
+  //       console.log(querySelections);
+  //     }
+  //     console.log(data[i]);
+  //     console.log(querySelections);
+  //   }
+  console.log(querySelections);
 };

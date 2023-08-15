@@ -75,4 +75,14 @@ router.get("/user", (req, res) => {
   res.render("user");
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const locations = await Location.findAll();
+    // res.json(locations);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while fetching locations");
+  }
+});
+
 module.exports = router;

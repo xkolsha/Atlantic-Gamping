@@ -12,7 +12,7 @@ const loginFormHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
 
-    if (response.ok) {
+    if (response) {
       document.location.replace("/settings");
     } else {
       //alert('Failed to log in.');
