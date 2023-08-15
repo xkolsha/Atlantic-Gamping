@@ -85,4 +85,66 @@ router.put(
   }
 );
 
+router.post("/search", async (req, res) => {
+  try {
+    console.log("Search endpoint hit. Form data received:", req.body);
+
+    const {
+      f1: guests,
+      f2: beds,
+      f3: waterfront1,
+      f4: wifi,
+      f5: cellService,
+      f6: fireplace,
+      f7: kitchen,
+      f8: electricity,
+      f9: shower,
+      f10: waterfront2,
+    } = req.body;
+
+    // Create a filter object based on the provided criteria.
+    let whereCriteria = {};
+
+    // Assuming your Location model has corresponding columns for these filters.
+    if (guests) whereCriteria.guests = guests;
+    if (beds) whereCriteria.beds = beds;
+    if (wifi === "on") whereCriteria.wifi = true;
+    if (cellService === "on") whereCriteria.cellService = true;
+    if (fireplace === "on") whereCriteria.fireplace = true;
+    if (kitchen === "on") whereCriteria.kitchen = true;
+    if (electricity === "on") whereCriteria.electricity = true;
+    if (shower === "on") whereCriteria.shower = true;
+    if (waterfront1 === "on" || waterfront2 === "on")
+      whereCriteria.waterfront = true;
+
+    console.log("Using the following filter criteria:", whereCriteria);
+
+    // Fetch all matching locations based on the criteria.
+    const matchingLocations = await Location.findAll({
+      where: whereCriteria,
+    });
+
+    console.log(`Found ${matchingLocations.length} matching locations.`);
+
+    // If no matching locations, render the locations-detail with no location.
+    if (matchingLocations.length === 0) {
+      console.log(
+        "No matching locations found. Rendering 'locations-detail' view without a location."
+      );
+      return res.render("locations-detail", { location: null });
+    }
+
+    // Select a random location from the matching locations.
+    const randomLocation =
+      matchingLocations[Math.floor(Math.random() * matchingLocations.length)];
+    console.log(`Selected random location with ID: ${randomLocation.id}`);
+
+    // Redirect to the detailed view of the random location.
+    res.redirect(`/api/locations/${randomLocation.id}`);
+  } catch (err) {
+    console.error("Error in /search endpoint:", err);
+    res.status(500).send("An error occurred while processing the search");
+  }
+});
+
 module.exports = router;
