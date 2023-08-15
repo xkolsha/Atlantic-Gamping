@@ -257,7 +257,7 @@ const runQuery = async () => {
 locationQuery = async (randProp) => {
   // const response = await fetch("http://localhost:3001/api/gamp/location");
   const response = await fetch(
-    "https://atlantic-glamping-7ef96dd8177e.herokuapp.com/api/gamp/location"
+    "https://atlantic-glamping-6972d1dfb7e3.herokuapp.com/api/gamp/location"
   );
   endData = randProp;
   const locdata = await response.json();
@@ -265,6 +265,8 @@ locationQuery = async (randProp) => {
   gampAnswers.innerHTML = `<h1 style="cursor: pointer; font-size: 34px;">${locdata[endData].title}</h1>`;
 
   gampAnswers.addEventListener("click", () => {
-    window.location.href = `http://localhost:3001/api/locations/${endData + 1}`;
+    window.location.href = `https://atlantic-glamping-6972d1dfb7e3.herokuapp.com/api/locations/${
+      endData + 1
+    }`;
   });
 };
