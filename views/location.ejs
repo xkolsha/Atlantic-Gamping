@@ -4,7 +4,7 @@
   <h1>All Locations</h1>
   <% locations.forEach(location => { %>
   <div>
-    <h2><a href="/location/<%= location.id %>"><%= location.title %></a></h2>
+    <h2><a href="/api/locations/<%= location.id %>"><%= location.title %></a></h2>
     <p><%= location.description %></p>
     <!-- Add more location attributes as needed -->
   </div>
