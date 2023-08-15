@@ -13,6 +13,9 @@ let qSection = document.querySelector("#q-section");
 // query selections
 // let querySelections = [];
 let querySelections = {};
+let matchData = [];
+let randProp = "";
+let endData = [];
 
 // Questions with options
 const questions = [
@@ -202,27 +205,64 @@ let question3 = () => {
 // function to query location
 const runQuery = async () => {
   const response = await fetch("http://localhost:3001/api/gamp");
+  // const response = await fetch("https://atlantic-glamping-7ef96dd8177e.herokuapp.com/api/gamp");
+
   const data = await response.json();
-  // console.log(querySelections);
-  // console.log(data);
-  // console.log(querySelections[0]);
-  // let dataValues = Object.values(data);
-  // let queryValues = Object.values(querySelections);
 
-  // for (let i = 0; i < data.length; i++) {
-  //   for (let j = 0; j < data.length; j++) {
-  //     console.log([j], "inner loop");
-  //   }
-
-  //   console.log([i], "outerloop");
-  // }
-
-  //   for (let i = 0; i < data.length; i++) {
-  //     for (let j = 0; j < querySelections.length; j++) {
-  //       console.log(querySelections);
-  //     }
-  //     console.log(data[i]);
-  //     console.log(querySelections);
-  //   }
   console.log(querySelections);
+
+  matchData = [];
+  data.forEach((property) => {
+    if (
+      property.wifi === querySelections.wifi &&
+      property.cell_service === querySelections.cell_service
+    ) {
+      matchData.push(property.location_id);
+    } else if (
+      property.shower === querySelections.shower &&
+      property.cell_service === querySelections.cell_service
+    ) {
+      matchData.push(property.location_id);
+    } else if (
+      property.wifi === querySelections.wifi &&
+      property.cell_service === querySelections.cell_service &&
+      property.electricity === querySelections.electricity &&
+      property.shower === querySelections.shower
+    ) {
+      matchData.push(property.location_id);
+    } else if (
+      property.num_guests === querySelections.num_guests &&
+      property.num_beds === querySelections.num_beds
+    ) {
+      matchData.push(property.location_id);
+    } else if (
+      property.waterfront === querySelections.waterfront &&
+      property.wifi === querySelections.wifi
+    ) {
+      matchData.push(property.location_id);
+    } else if (
+      property.fireplace === querySelections.fireplace &&
+      property.electricity === querySelections.electricity
+    ) {
+      matchData.push(property.location_id);
+    }
+  });
+  console.log(matchData);
+  randProp = Math.floor(Math.random() * matchData.length);
+
+  console.log(randProp);
+  locationQuery(randProp);
+};
+
+locationQuery = async (randProp) => {
+  const response = await fetch("http://localhost:3001/api/gamp/location");
+  // const response = await fetch("https://atlantic-glamping-7ef96dd8177e.herokuapp.com/api/gamp/location");
+  endData = randProp;
+  const locdata = await response.json();
+  console.log(locdata[endData].title);
+  gampAnswers.innerHTML = `<h1 style="cursor: pointer; font-size: 34px;">${locdata[endData].title}</h1>`;
+
+  gampAnswers.addEventListener("click", () => {
+    window.location.href = `http://localhost:3001/api/locations/${endData + 1}`;
+  });
 };
