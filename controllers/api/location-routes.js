@@ -38,4 +38,51 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Endpoint to post a review for a specific location by ID
+router.post("/:id/reviews", upload.single("image"), async (req, res) => {
+  try {
+    const locationId = req.params.id;
+    const { content, rating } = req.body;
+    const image = req.file ? req.file.filename : null;
+    await Review.create({
+      content,
+      rating,
+      image,
+      location_id: locationId,
+    });
+    res.redirect(`/api/locations/${locationId}`); // Redirect back to the location detail
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("An error occurred while submitting the review");
+  }
+});
+
+router.put(
+  "/:LocationId/reviews/:reviewId",
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      console.log("Request body:", req.body); // Log the request body
+      console.log("Request params:", req.params); // Log the request params
+      const reviewId = req.params.reviewId;
+      const locationId = req.params.locationId;
+      const { content, rating } = req.body;
+      const image = req.file ? req.file.filename : null;
+      await Review.update(
+        { content, rating, image },
+        { where: { id: reviewId } }
+      );
+      const review = await Review.findOne({ where: { id: reviewId } });
+      console.log(review);
+      if (!review) {
+        return res.status(404).send("Review not found");
+      }
+      res.send(review).status(200);
+    } catch (err) {
+      console.error(err); // Log the error
+      res.status(500).send("An error occurred while updating the review");
+    }
+  }
+);
+
 module.exports = router;

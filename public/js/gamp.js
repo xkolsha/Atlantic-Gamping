@@ -184,7 +184,7 @@ let question3 = () => {
 };
 
 const runQuery = async () => {
-  const response = await fetch("http://localhost:3001/api/locations");
+  const response = await fetch("http://localhost:3001/api/location");
   const data = await response.json();
 
   for (let i = 0; i < querySelections.length; i++) {
