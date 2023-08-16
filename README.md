@@ -71,7 +71,7 @@ Atlantic Glamping is not just another booking site; it's a curated experience. T
 
 MIT License
 
-Copyright (c) 2023 [`Farrah Hodgson`](https://github.com/Firene11), [`Terence Arseneault`](https://github.com/Terence-A) and [`Aviad Kohn`](https://github.com/xkolsha)
+Copyright (c) 2023 [`Farrah Hodgson`](https://github.com/Firene11), [`Terence Arseneault`](https://github.com/Terence-A), [`Aviad Kohn`](https://github.com/xkolsha) and [`Tabs10`](https://github.com/Tabs10)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
