@@ -1,4 +1,4 @@
-# Project 2: Interactive Front-End Application
+# Project 2: Interactive Full-Stack Project
 
 ## Description
 
