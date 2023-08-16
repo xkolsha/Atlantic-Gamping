@@ -7,9 +7,23 @@ const chalk = require("chalk");
 const PORT = process.env.PORT || 3001;
 const routes = require("./controllers");
 const methodOverride = require("method-override");
+const cors = require("cors");
 
 // Initialize Express.js App
 const app = express();
+
+const allowedOrigins = ["https://atlantic-glamping-6972d1dfb7e3.herokuapp.com"];
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
 // Import sequelize connection
 const sequelize = require("./config/connection");
