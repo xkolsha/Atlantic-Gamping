@@ -46,6 +46,7 @@ Atlantic Glamping is not just another booking site; it's a curated experience. T
 ![Mock up of the website](/public/images/Web%20capture_15-8-2023_213038_atlantic-glamping-6972d1dfb7e3.herokuapp.com.jpeg)
 ![Mock up of the website](/public/images/Web%20capture_15-8-2023_213125_atlantic-glamping-6972d1dfb7e3.herokuapp.com.jpeg)
 ![Mock up of the website](/public/images/Web%20capture_15-8-2023_222229_atlantic-glamping-6972d1dfb7e3.herokuapp.com.jpeg)
+![Mock up of the website](/public/images/Screenshot%202023-08-15%20223023.png)
 
 ## Deployment
 
@@ -54,7 +55,7 @@ Atlantic Glamping is not just another booking site; it's a curated experience. T
 
 ## Credits
 
-- [Professional README Guide](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
+- [`Professional README Guide`](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide)
 - [`bcrypt`](https://www.npmjs.com/package/bcrypt)
 - [`chalk`](https://www.npmjs.com/package/chalk)
 - [`MySQL`](https://www.mysql.com/)
