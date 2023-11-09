@@ -50,7 +50,7 @@ Atlantic Glamping is not just another booking site; it's a curated experience. T
 
 ## Deployment
 
-- **Heroku**: [Atlantic Glamping on Heroku](https://atlantic-glamping-6972d1dfb7e3.herokuapp.com/)
+- **Heroku**: [Atlantic Glamping on Heroku](https://atlantic-glamping-1-32ab0f56f377.herokuapp.com/)
 - **GitHub Repo**: [Atlantic Glamping Repository](https://github.com/xkolsha/Atlantic-Glamping)
 
 ## Credits
